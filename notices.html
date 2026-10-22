@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111014">
+  <title>Campus Notices | CampFixr</title>
+  <link rel="stylesheet" href="notices.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="dashboard.html"><img class="brand-mark" src="campfixr-logo.svg" alt=""> <span>CampFixr</span></a>
+      <a class="back-link" href="dashboard.html">← Dashboard</a>
+    </header>
+    <section class="page-heading">
+      <p class="eyebrow">CAMPUS UPDATES</p>
+      <h1>Notices & Announcements</h1>
+      <p>Official updates shared by the campus administration.</p>
+      <span id="account-name" class="account-name"></span>
+    </section>
+    <section id="admin-panel" class="panel admin-panel" hidden>
+      <h2>Post a campus notice</h2>
+      <form id="notice-form">
+        <label for="notice-title">Notice title</label>
+        <input id="notice-title" name="title" maxlength="120" required placeholder="For example: Library hours update">
+        <label for="notice-message">Message</label>
+        <textarea id="notice-message" name="message" rows="4" maxlength="2000" required placeholder="Write the announcement for students and staff"></textarea>
+        <button type="submit">Publish notice</button>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section id="password-reset-panel" class="panel admin-panel" hidden>
+      <h2>Generate student password reset code</h2>
+      <form id="password-reset-code-form">
+        <label for="reset-student-id">Student ID / Username</label>
+        <input id="reset-student-id" required autocomplete="off" placeholder="Enter student's account ID">
+        <button type="submit">Generate one-time code</button>
+        <p id="reset-code-result" role="status" aria-live="polite"></p>
+      </form>
+      <p class="notice-meta">Give the code directly to that student. It expires in 15 minutes and can only be used once.</p>
+    </section>
+    <section class="panel notices-panel" aria-labelledby="notices-title">
+      <div class="panel-heading"><h2 id="notices-title">All campus notices</h2><span id="notice-count"></span></div>
+      <div id="notice-list" class="notice-list" aria-live="polite"><p class="empty">Loading notices…</p></div>
+    </section>
+    <footer>© <span id="year"></span> CampFixr · Student Support Portal</footer>
+  </main>
+  <script src="notices.js"></script>
+</body>
+</html>

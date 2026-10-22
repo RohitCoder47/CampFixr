@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111014">
+  <title>Sign in | CampFixr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+  
+
+</head>
+<body>
+
+  <main class="login-page">
+    <section class="intro-panel">
+      <a class="brand" href="index.html" aria-label="CampFixr home">
+        <img class="brand-mark" src="campfixr-logo.svg" alt="">
+        <span>
+          <strong>CampFixr</strong>
+          <small>STUDENT SUPPORT PORTAL</small>
+        </span>
+      </a>
+
+      <div class="intro-copy">
+        <span class="eyebrow"><i></i> YOUR CAMPUS, YOUR VOICE</span>
+        <h1>A better campus<br>starts with being heard.</h1>
+        <p>Raise a concern, follow its progress, and help make campus life better for everyone.</p>
+
+        <div class="steps">
+          <div class="step">
+            <span>01</span>
+            <div>
+              <strong>Tell us what happened</strong>
+              <small>Submit a campus concern in a few steps.</small>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>02</span>
+            <div>
+              <strong>Follow the progress</strong>
+              <small>See updates as your complaint is reviewed.</small>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>03</span>
+            <div>
+              <strong>Stay in the loop</strong>
+              <small>Get updates from the team handling it.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-footer">
+        <span>© <span id="year"></span> CampFixr</span>
+        <span>Built for a better campus</span>
+      </div>
+
+      <div class="art-orbit orbit-one"></div>
+      <div class="art-orbit orbit-two"></div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-top">
+        <span>New to CampFixr?</span>
+        <a href="#register" id="register-link">Create student account</a>
+      </div>
+
+      <div class="login-card">
+        <div class="mobile-brand">
+          <img class="brand-mark" src="campfixr-logo.svg" alt="">
+          <strong>campus<span>care</span></strong>
+        </div>
+
+        <div class="welcome-icon">↗</div>
+        <span class="form-eyebrow">WELCOME BACK</span>
+        <h2>Sign in to your account</h2>
+        <p class="form-description">Use your campus account to continue.</p>
+
+        <form id="login-form">
+  <label for="username">Username / Student ID</label>
+  <input
+    id="username"
+    name="username"
+    type="text"
+    placeholder="Enter username or Student ID"
+    autocomplete="username"
+    required
+  >
+          <div class="password-label">
+            <label for="password">Password</label>
+            <a href="#forgot" id="forgot-link">Forgot password?</a>
+          </div>
+
+          <div class="password-box">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+            <button
+              type="button"
+              id="toggle-password"
+              aria-label="Show password"
+            >Show</button>
+          </div>
+
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            <span>Remember me on this device</span>
+          </label>
+
+          <button class="sign-in-button" type="submit">
+            Sign in <span>→</span>
+          </button>
+        </form>
+
+        <div class="divider"><span>SECURE CAMPUS ACCESS</span></div>
+
+        <p class="staff-note">
+          <span class="lock-icon">▣</span>
+          Staff and administrators use their campus-issued account here too.
+        </p>
+
+        <p class="privacy-note">
+          Your account role determines which dashboard you can access.
+        </p>
+      </div>
+
+      <div class="form-footer">
+        <a href="mailto:support@campus.edu">Need help signing in?</a>
+        <span>Privacy&nbsp;&nbsp; · &nbsp;&nbsp;Terms</span>
+      </div>
+    </section>
+  </main>
+
+  <div class="reset-backdrop" id="register-backdrop" hidden>
+    <section class="reset-card" role="dialog" aria-modal="true" aria-labelledby="register-title">
+      <button type="button" class="reset-close" id="close-register" aria-label="Close">×</button>
+      <span class="form-eyebrow">STUDENT REGISTRATION</span>
+      <h2 id="register-title">Create student account</h2>
+      <p>Apna asli Student ID/username aur naya password enter karein. Student ID ki college verification abhi automatic nahi hai.</p>
+      <form id="register-form">
+        <label for="register-username">Student ID / Username</label>
+        <input id="register-username" required autocomplete="username">
+        <label for="register-password">Password (at least 8 characters)</label>
+        <input id="register-password" type="password" minlength="8" required autocomplete="new-password">
+        <label for="register-confirm-password">Confirm password</label>
+        <input id="register-confirm-password" type="password" minlength="8" required autocomplete="new-password">
+        <button type="submit" class="sign-in-button">Create account</button>
+        <p id="register-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </div>
+
+  <div class="reset-backdrop" id="reset-backdrop" hidden>
+    <section class="reset-card" role="dialog" aria-modal="true" aria-labelledby="reset-title">
+      <button type="button" class="reset-close" id="close-reset" aria-label="Close">×</button>
+      <span class="form-eyebrow">ACCOUNT RECOVERY</span>
+      <h2 id="reset-title">Set a new password</h2>
+      <p>Admin se mila one-time reset code aur naya password daalein.</p>
+      <form id="reset-password-form">
+        <label for="reset-username">Student ID / Username</label>
+        <input id="reset-username" required autocomplete="username">
+        <label for="reset-code">One-time reset code</label>
+        <input id="reset-code" required autocomplete="one-time-code">
+        <label for="new-password">New password (at least 8 characters)</label>
+        <input id="new-password" type="password" minlength="8" required autocomplete="new-password">
+        <label for="confirm-password">Confirm new password</label>
+        <input id="confirm-password" type="password" minlength="8" required autocomplete="new-password">
+        <button type="submit" class="sign-in-button">Reset password</button>
+        <p id="reset-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="login.js"></script>
+</body>
+</html>

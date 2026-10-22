@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampFixr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview">
+        <img class="brand-mark" src="campfixr-logo.svg" alt="">
+        <span>
+          <strong>CampFixr</strong>
+          <small>STUDENT SUPPORT PORTAL</small>
+        </span>
+      </a>
+
+      <label class="small-label" for="role-picker">WORKSPACE</label>
+      <select id="role-picker" class="role-picker">
+        <option value="student">Student dashboard</option>
+        <option value="admin">Admin dashboard</option>
+        <option value="department">Department dashboard</option>
+      </select>
+
+      <nav class="main-nav">
+        <p class="small-label">MENU</p>
+        <a href="#overview" class="nav-link active">
+          <span>▦</span> Dashboard
+        </a>
+        <a href="#new-complaint" class="nav-link" data-action="new">
+          <span>＋</span> Submit Complaint
+        </a>
+        <a href="#complaints" class="nav-link" data-action="complaints">
+          <span>▤</span>
+          <span id="complaint-nav-label">My Complaints</span>
+        </a>
+        <a href="#notifications" class="nav-link" data-action="notifications">
+          <span>🔔</span> Notifications
+          <b class="nav-count" id="notification-count">0</b>
+        </a>
+        <a href="#profile" class="nav-link" data-action="profile">
+          <span>◉</span> Profile
+        </a>
+        <a href="#settings" class="nav-link" data-action="settings">
+          <span>⚙</span> Settings
+        </a>
+        <a href="mailto:support@campus.edu" class="nav-link">
+        <span>✉</span>Contact Support
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="campus-note">
+          
+        </div>
+
+        <div class="profile">
+          <span class="avatar">CC</span>
+          <span>
+            <strong id="sidebar-user-name">Campus user</strong>
+            <small id="profile-role">Student account</small>
+          </span>
+          <span class="more">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="search-input" type="search" placeholder="Search complaints, keywords...">
+        </label>
+
+        <div class="top-actions">
+          <button class="bell-button" id="bell-button" aria-label="Notifications">
+            🔔<i></i>
+          </button>
+          <span class="top-avatar">CC</span>
+          <span class="user-name">
+            <span id="top-user-name">Campus user</span>
+            <small id="top-role">Student</small>
+          </span>
+        </div>
+      </header>
+
+      <div class="dashboard-grid">
+        <section class="main-column">
+          <section class="welcome-card">
+  <div class="welcome-text">
+    <span class="eyebrow" id="dashboard-label">STUDENT DASHBOARD</span>
+
+    <h1 id="welcome-title">Welcome back, Student!</h1>
+
+    <p id="welcome-subtitle">
+      Raise concerns. Track progress. Improve your campus.
+    </p>
+
+    <small>Report campus issues directly to management.</small>
+  </div>
+
+  <div class="campus-art" aria-hidden="true">
+    <span class="sun"></span>
+    <div class="building building-one"></div>
+    <div class="building building-two"></div>
+    <div class="building building-three"></div>
+    <div class="hill"></div>
+  </div>
+</section>
+
+          <section class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-icon purple">▤</span>
+              <strong id="total-count">0</strong>
+              <span>Total Complaints</span>
+              <!-- <a href="#complaints" data-action="complaints" data-status-filter="all">View all →</a> -->
+            </article>
+
+            <article class="stat-card">
+              <span class="stat-icon gold">◷</span>
+              <strong id="pending-count">0</strong>
+              <span>Pending</span>
+              <!-- <a href="#complaints" data-action="complaints" data-status-filter="pending">View all →</a> -->
+            </article>
+
+            <article class="stat-card">
+              <span class="stat-icon green">✓</span>
+              <strong id="resolved-count">0</strong>
+              <span>Resolved</span>
+              <!-- <a href="#complaints" data-action="complaints" data-status-filter="resolved">View all →</a> -->
+            </article>
+
+            <article class="stat-card">
+              <span class="stat-icon lilac">▢</span>
+              <strong id="review-count">0</strong>
+              <span>Under Review</span>
+              <!-- <a href="#complaints" data-action="complaints" data-status-filter="review">View all →</a> -->
+            </article>
+          </section>
+
+          <section class="panel complaints-panel" id="complaints">
+            <div class="section-heading">
+              <div>
+                <h2 id="list-title">Recent Complaints</h2>
+                <p id="list-subtitle">Your submitted complaints will appear here.</p>
+              </div>
+              <button class="link-button" data-action="complaints">
+                View All Complaints →
+              </button>
+            </div>
+
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Complaint ID</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="complaint-list">
+                  <tr>
+                    <td colspan="7">
+                      <div class="empty-state">
+                        <span>▤</span>
+                        <strong>No complaints submitted</strong>
+                        <small>Use “Submit a New Complaint” to get started.</small>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="lower-grid">
+            <article class="panel small-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Quick Statistics</h2>
+                  <p>Your complaint categories</p>
+                </div>
+                <span class="period-label">All time</span>
+              </div>
+              <div class="chart-empty">
+                <div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div>
+                <span>No complaint data yet</span>
+              </div>
+            </article>
+
+            <article class="panel small-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Complaint Status Overview</h2>
+                  <p>Current status summary</p>
+                </div>
+              </div>
+              <div class="status-empty">
+                <div class="empty-ring">0<small>Total</small></div>
+                <span>No status data yet</span>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <aside class="right-column">
+          <section class="panel quick-panel">
+
+        <section class="panel activity-panel">
+  <div class="section-heading">
+    <h2>Recent Activity</h2>
+  </div>
+
+  <div class="activity-empty">
+    <span>◷</span>
+    <strong>No recent activity</strong>
+    <small>Updates will appear here when your complaint status changes.</small>
+  </div>
+</section>
+
+          <section class="notice-card">
+            <span>⚑</span>
+            <div>
+              <strong>Important Notice</strong>
+              <p class="notice-title" id="important-notice-title">Loading latest notice…</p>
+              <p id="important-notice-message">Campus announcements will appear here.</p>
+              <a href="#notifications" data-action="notifications">View all notices →</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="page-footer">
+        <span>© <span id="year"></span> CampFixr. All rights reserved.</span>
+        <span>Help &nbsp; | &nbsp; Privacy &nbsp; | &nbsp; Terms</span>
+      </footer>
+    </main>
+
+    <div class="mobile-scrim" id="mobile-scrim"></div>
+  </div>
+
+  <div class="modal-backdrop" id="complaint-modal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+      <span class="eyebrow">CAMPFIXR</span>
+      <h2 id="modal-title">Submit a complaint</h2>
+      <p>Tell us about the issue. You can track it from My Complaints.</p>
+
+      <form id="complaint-form">
+        <label for="complaint-title">Complaint title</label>
+        <input id="complaint-title" required maxlength="80" placeholder="Short title for your complaint">
+
+        <div class="classification-note" role="note">
+          <strong>Category and priority are automatic</strong>
+          <span>C++ will analyze your title and description when you submit the complaint.</span>
+        </div>
+        <label for="complaint-description">Description</label>
+        <textarea id="complaint-description" required rows="4" placeholder="Describe the issue"></textarea>
+
+        <button class="primary-button" type="submit">Submit complaint</button>
+      </form>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <!-- Profile popup -->
+<div class="modal-backdrop" id="profile-modal" hidden>
+  <section class="modal">
+    <button class="modal-close" data-close-modal="profile-modal">×</button>
+
+    <span class="eyebrow">ACCOUNT</span>
+    <h2>My Profile</h2>
+    <p>Details for the account you are currently signed in with.</p>
+
+    <div class="profile-details">
+      <strong>Username / ID</strong>
+      <span id="profile-modal-username">—</span>
+
+      <strong>Role</strong>
+      <span id="profile-modal-role">Student</span>
+
+      <strong>Department</strong>
+      <span id="profile-modal-department">—</span>
+    </div>
+  </section>
+</div>
+
+<!-- Settings popup -->
+<div class="modal-backdrop" id="settings-modal" hidden>
+  <section class="modal">
+    <button class="modal-close" data-close-modal="settings-modal">×</button>
+
+    <span class="eyebrow">PREFERENCES</span>
+    <h2>Settings</h2>
+    <p>Change the notification settings on the dashboard.</p>
+
+    <label class="setting-option">
+      <input id="notification-setting" type="checkbox" checked>
+      Show notification messages
+    </label>
+
+    <p class="settings-note">
+      The dashboard’s black, charcoal, and purple theme will remain unchanged.
+    </p>
+  </section>
+</div>
+
+<div id="toast" class="toast" role="status"></div>
+<div class="modal-backdrop" id="activity-modal" hidden>
+  <section class="modal activity-history-modal" role="dialog" aria-modal="true" aria-labelledby="activity-modal-title">
+    <button class="modal-close" data-close-modal="activity-modal" aria-label="Close">×</button>
+    <span class="eyebrow">COMPLAINT HISTORY</span>
+    <h2 id="activity-modal-title">Complaint activity</h2>
+    <p id="activity-modal-subtitle"></p>
+    <div id="activity-history-list" class="activity-history-list"></div>
+  </section>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

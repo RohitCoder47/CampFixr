@@ -1,0 +1,176 @@
+*{
+    box-sizing:border-box
+}
+body{
+    margin:0;
+    min-width:320px;
+    min-height:100vh;
+    background:#111014;
+    color:#eeeaf4;
+    font:15px Arial,sans-serif
+}
+.page-shell{
+    max-width:1000px;
+    margin:0 
+    auto;padding:0 24px
+}
+.topbar{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #302d35
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#eeeaf4;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:700
+}
+.back-link{
+    color:#c6a6f5;
+    text-decoration:none
+}
+.page-heading{
+    padding:42px 0 24px
+}
+.eyebrow{
+    margin:0 0 8px;
+    color:#c2a2f5;
+    letter-spacing:1.5px;
+    font-size:12px
+}
+.page-heading h1{
+    margin:0 0 10px;
+    font-size:32px
+}
+.page-heading>p:not(.eyebrow){
+    margin:0;
+    color:#aaa2b1
+}
+    .account-name{
+        display:inline-block;
+        margin-top:14px;
+        color:#d4c0ef;
+        font-size:13px
+    }
+    .panel{
+        margin:0 0 18px;
+        border:1px solid #37313e;
+        border-radius:10px;
+        background:#1c1a20;
+        overflow:hidden
+    }
+    .admin-panel{
+        padding:20px
+    }
+    .admin-panel h2,.panel-heading h2{
+        margin:0;
+        font-size:18px
+    }
+    .admin-panel form{
+        display:grid;
+        gap:9px;
+        margin-top:16px
+    }
+    .admin-panel label{
+        font-size:13px;
+        color:#c9bdd8
+    }
+    .admin-panel input,.admin-panel textarea{
+        width:100%;
+        padding:11px;
+        border:1px solid #494151;
+        border-radius:6px;
+        background:#25222a;
+        color:#f3eef7;
+        font:inherit
+    }
+    .admin-panel textarea{
+        resize:vertical
+    }
+    .admin-panel button{
+        justify-self:start;
+        border:0;
+        border-radius:6px;
+        background:#8058bb;
+        color:white;
+        padding:10px 16px;
+        font-weight:bold;
+        cursor:pointer
+    }
+    .admin-panel button:hover{
+        background:#946dce
+    }
+    #form-message{
+        min-height:16px;
+        margin:0;
+        color:#c6a6f5;
+        font-size:13px
+    }
+    .panel-heading{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:18px 20px;
+        border-bottom:1px solid #37313e
+    }
+    .panel-heading span{
+        color:#aaa2b1;
+        font-size:13px
+    }
+        .notice-list{
+            padding:16px;
+            display:grid;
+            gap:12px
+        }
+        .notice-card{
+            padding:17px;
+            border:1px solid #37313e;
+            border-radius:8px;
+            background:#211e25
+        }
+        .notice-card h3{
+            margin:0 0 9px;
+            font-size:17px
+        }
+        .notice-card p{
+            margin:0;
+            color:#d0c9d5;
+            line-height:1.6;
+            white-space:pre-wrap
+        }
+        .notice-meta{
+            margin-top:12px;
+            color:#9e96a5;
+            font-size:12px
+        }
+        .empty,.error{
+            padding:30px 14px;
+            text-align:center;
+            color:#b9b0c1
+        }
+        .error{
+            color:#ffc0c0
+        }
+        footer{
+            padding:22px 0;
+            color:#807986;
+            font-size:12px
+        }
+        @media(max-width:600px){
+            .page-shell{padding:0 14px}
+            .page-heading{padding:30px 0 18px}
+            .page-heading h1{font-size:27px}
+            .panel-heading{gap:10px}
+        }
+.brand-mark{
+    display:block;
+    width:36px;
+    height:36px;
+    flex:none;
+    object-fit:contain
+}
