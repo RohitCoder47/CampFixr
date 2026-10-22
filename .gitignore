@@ -4,3 +4,4 @@ node_modules/
 !.env.example
 *.log
 complaint_processor.exe
+complaint_processor

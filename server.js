@@ -10,6 +10,14 @@ require("dotenv").config();
 
 const app = express();
 
+// The Windows development executable has a .exe suffix; Docker/Linux does not.
+function getComplaintProcessorPath() {
+  const executable = process.platform === "win32"
+    ? "complaint_processor.exe"
+    : "complaint_processor";
+  return path.join(__dirname, executable);
+}
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -447,7 +455,7 @@ app.post(
 
 function analyzeWithCpp(text) {
   return new Promise(function (resolve, reject) {
-    const cppFile = path.join(__dirname, "complaint_processor.exe");
+    const cppFile = getComplaintProcessorPath();
     const cppProgram = spawn(cppFile, [], { windowsHide: true });
     let output = "";
     let errorText = "";
@@ -485,7 +493,7 @@ function rankComplaintsWithCpp(complaints) {
   return new Promise(function (resolve, reject) {
     if (!complaints.length) return resolve([]);
 
-    const cppFile = path.join(__dirname, "complaint_processor.exe");
+    const cppFile = getComplaintProcessorPath();
     const cppProgram = spawn(cppFile, ["--rank"], { windowsHide: true });
     let output = "";
     let errorText = "";
@@ -528,7 +536,7 @@ function findPossibleDuplicatesWithCpp(text, complaints) {
   return new Promise(function (resolve, reject) {
     if (!complaints.length) return resolve([]);
 
-    const cppFile = path.join(__dirname, "complaint_processor.exe");
+    const cppFile = getComplaintProcessorPath();
     const cppProgram = spawn(cppFile, ["--duplicates"], { windowsHide: true });
     let output = "";
     let errorText = "";
@@ -613,7 +621,7 @@ app.post(
 
 function calculateComplaintStatisticsWithCpp(complaints) {
   return new Promise(function (resolve, reject) {
-    const cppFile = path.join(__dirname, "complaint_processor.exe");
+    const cppFile = getComplaintProcessorPath();
     const cppProgram = spawn(cppFile, ["--stats"], { windowsHide: true });
     let output = "";
     let errorText = "";
@@ -843,8 +851,9 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(function () {
     console.log("MongoDB connected");
 
-    app.listen(3000, function () {
-      console.log("Backend is running.: http://localhost:3000");
+    const port = Number(process.env.PORT) || 3000;
+    app.listen(port, "0.0.0.0", function () {
+      console.log("Backend is running on port " + port);
     });
   })
   .catch(function (error) {
